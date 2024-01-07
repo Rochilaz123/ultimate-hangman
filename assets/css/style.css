@@ -1,0 +1,84 @@
+/* font-family: 'Kanit', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Ubuntu', sans-serif; */
+
+body {
+    min-height: 100vh;
+    font-family: 'Kanit', sans-serif
+}
+
+h1 {
+    font-size: 8vw;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 900;
+    background-color: lightgreen;
+}
+
+h4 {  
+    font-size: 6vw;
+    text-align: center;
+    color: darkgreen;
+    margin-top: 0px;  
+    margin-bottom: 0px; 
+}
+
+p {
+    text-align: center;
+    font-size: 4vw;
+    margin-top: 0px;
+}
+
+/* Styling for Level Buttons*/
+
+.level-buttons {
+    padding: 5px;
+    margin-bottom: 15px;
+    font-size: large;
+    width: 150px;
+    height: 60px;
+    border: 0cap;
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+#level-buttons-area {
+    height: auto;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+
+#level1 {
+    background-color: green;
+}
+
+#level2 {
+    background-color: yellow;
+}
+
+#level3 {
+    background-color: lightblue;
+}
+
+#level4 {
+    background-color: violet;
+}
+
+#level5 {
+    background-color: orange;
+}
+
+#level6 {
+    background-color: red;
+}
+
+
+footer {
+
+}
