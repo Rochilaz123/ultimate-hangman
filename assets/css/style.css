@@ -78,6 +78,15 @@ p {
     background-color: red;
 }
 
+h5 {
+    text-align: center;
+    font-size: larger;
+}
+
+#insructions {
+    font-size: 20px;
+    text-align: left;
+}
 
 footer {
 
