@@ -94,3 +94,9 @@ h5 {
     margin-left: 5px;
     margin-right: 5px;
 }
+
+#hangman-image {
+    width: auto;
+    height: 50vh;
+    margin: 10px, 5vw;
+}

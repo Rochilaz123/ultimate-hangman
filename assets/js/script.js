@@ -16,6 +16,24 @@ function runGame() {
 }
  
 function wrongLetter() {
+    let hangmanImageSrcs = [
+        "assets/images/hangman/0.jpg",
+        "assets/images/hangman/1.jpg",
+        "assets/images/hangman/2.jpg", 
+        "assets/images/hangman/3.jpg",
+        "assets/images/hangman/4.jpg",
+        "assets/images/hangman/5.jpg",
+        "assets/images/hangman/6.jpg",
+        "assets/images/hangman/7.jpg",
+        "assets/images/hangman/8.jpg",
+        "assets/images/hangman/9.jpg",
+        "assets/images/hangman/10.jpg",
+    ]
+    //this if statement should change the image src if letter is incorrect
+    if(){
+        
+        document.getElementById("hangman-image").setAttribute("src","")
+    }
 
 }
 
@@ -68,6 +86,14 @@ function chooseDifferentLevel() {
 
 function updateScore() {
 
+}
+
+//this function should check if the letter is correct.
+//if the letter is correct, it will call the correct letter functio
+//if the letter is incorrect it will cal the wrong letter function
+
+function checkLetter() {
+    addEventListener
 }
 
 function correctLetter() {
