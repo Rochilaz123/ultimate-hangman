@@ -1,3 +1,16 @@
+document.addEventListener("DOMContentLoaded", function(){
+    let buttons = document.getElementsByTagName("button");
+    for (let button of buttons) {
+        button.addEventListener("click", function(){
+            //this.getAttribute("data-type")
+            let gameLevel = this.getAttribute("data-type");
+            alert(`You chose ${gameLevel}`)
+        })
+
+        }
+    }
+)
+
 
 function runGame() {
 
@@ -34,5 +47,5 @@ function correctLetter() {
 }
 
 function incorrectLetter() {
-    
+
 }
