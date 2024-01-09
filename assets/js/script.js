@@ -51,10 +51,22 @@ document.addEventListener("DOMContentLoaded", function (){
 
 
 function runGame() {
+    displayWord(wordArray)
+    let guessLetter = []
+    
+    function handleKeyDown (event){
+      let keyPressed = event.key.toLowerCase()
+
+      if (wordArray.includes(keyPressed)){
+        console.log(keyPressed)
+      } else {
+        wrongLetter(keyPressed)
+      }
+    }
 
 }
  
-function wrongLetter() {
+function wrongLetter(parameter) {
     let hangmanImageSrcs = [
         "assets/images/hangman/0.jpg",
         "assets/images/hangman/1.jpg",
@@ -69,10 +81,17 @@ function wrongLetter() {
         "assets/images/hangman/10.jpg",
     ]
     //this if statement should change the image src if letter is incorrect
-    if(""){
-        
-        document.getElementById("hangman-image").setAttribute("src","")
-    }
+
+    let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src")
+
+    let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc)
+
+    let newHangmanImage = lastHangmanImage + 1
+    
+    document.getElementById("hangman-image").setAttribute("src", newHangmanImage)
+
+    console.log(`Sorry...${parameter}is not in the word`)
+    
 
 }
 
