@@ -1,3 +1,15 @@
+let numberOfLetters = [
+    ["stripe", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "charge", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
+    ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
+    ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
+    ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
+    ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
+    ]
+
+let wordNumber = ""
+
+let usedWords = []
+
 document.addEventListener("DOMContentLoaded", function (){
 
     let buttons = document.getElementsByTagName("button")
@@ -5,17 +17,6 @@ document.addEventListener("DOMContentLoaded", function (){
     
     for (let button of buttons) {
 
-        let numberOfLetters = [
-            ["stripe", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "charge", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
-            ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
-            ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
-            ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
-            ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
-            ]
-
-        let wordNumber = ""
-
-        let usedWords = []
     
         button.addEventListener("click", function chooseWord(){
 
@@ -25,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function (){
 
             if (gameLevel === "6 letter words"){
             let word = numberOfLetters[0][wordNumber]
-            displayWord(word)
             if (usedWords.includes(word)){                
                 console.log(word + " already used")
                 if(usedWords.length === 19){
                     alert("Well Done!You have completed Level 1! Choose a different level to continue.")
                 }
             } else {
-                usedWords.push(word)                
+                runGame(word)
+                usedWords.push(word)             
             }
             
             } else if (gameLevel === "7 letter words") {
@@ -50,22 +51,29 @@ document.addEventListener("DOMContentLoaded", function (){
 })
 
 
-function runGame() {
-    displayWord(wordArray)
-    let guessLetter = []
-    
-    function handleKeyDown (event){
-      let keyPressed = event.key.toLowerCase()
+function runGame(word) {
+    displayWord(word)
 
-      if (wordArray.includes(keyPressed)){
-        console.log(keyPressed)
-      } else {
-        wrongLetter(keyPressed)
-      }
-    }
-
+    let wordArray = word.split("")
 }
- 
+
+function handleKeyDown (event){
+    let keyPressed = event.key.toLowerCase()
+
+    if (wordArray.includes(keyPressed)){
+      correctLetter()
+    } else {
+      wrongLetter(keyPressed)
+    }
+  }
+
+let incorrectLetters = ""
+incorrectLetters = incorrectLetters + "s"
+
+/**
+ * This code updates the hangman image
+ * @param {*} parameter 
+ */
 function wrongLetter(parameter) {
     let hangmanImageSrcs = [
         "assets/images/hangman/0.jpg",
@@ -80,7 +88,6 @@ function wrongLetter(parameter) {
         "assets/images/hangman/9.jpg",
         "assets/images/hangman/10.jpg",
     ]
-    //this if statement should change the image src if letter is incorrect
 
     let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src")
 
@@ -88,23 +95,17 @@ function wrongLetter(parameter) {
 
     let newHangmanImage = lastHangmanImage + 1
     
-    document.getElementById("hangman-image").setAttribute("src", newHangmanImage)
+    document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage])
 
     console.log(`Sorry...${parameter}is not in the word`)
     
 
 }
 
-function displayWord(answer) {
-    alert("word is " + answer )
-    let wordArray = answer.split("")
-    addEventListener
-
+function displayWord(word) {
+    alert("word is " + word )
     
 }
-
-displayWord(answer)
-
 
 function giveUp() {
 
@@ -113,9 +114,20 @@ function giveUp() {
 function chooseDifferentLevel() {
 
 }
-
+/**
+ * Gets the current score and adds 1
+ */
 function updateScore() {
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
+}
 
+/**
+ * get the number of game losses and adds 1
+ */
+function updateLosses(){
+    let oldLosses = parseInt(document.getElementById("losses").innerText);
+    document.getElementById("losses").innerText = ++oldLosses;
 }
 
 //this function should check if the letter is correct.
@@ -127,9 +139,5 @@ function checkLetter() {
 }
 
 function correctLetter() {
-
-}
-
-function incorrectLetter() {
 
 }
