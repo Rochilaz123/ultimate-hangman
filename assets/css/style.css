@@ -12,9 +12,10 @@ h1 {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-weight: 900;
-    background-color: lightgreen;
+    background-color: lightskyblue;
     margin-top: 0;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 h4 {  
@@ -97,6 +98,20 @@ h5 {
 
 #hangman-image {
     width: auto;
-    height: 50vh;
-    margin: 10px, 5vw;
+    height: 40vh;
+    display: block;
+    margin: 0 auto;
+}
+
+#hangman-box {
+    margin-top: 5vh;
+
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
