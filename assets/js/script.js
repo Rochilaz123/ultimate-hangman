@@ -1,14 +1,55 @@
-document.addEventListener("DOMContentLoaded", function(){
-    let buttons = document.getElementsByTagName("button")
-    for (let button of buttons) {
-        button.addEventListener("click", function(){
-            let gameLevel = this.getAttribute("data-type");
-            function gameToRun()
-        })
+document.addEventListener("DOMContentLoaded", function chooseLevelWord(){
 
-        }
-    }
-)
+    let buttons = document.getElementsByTagName("button")
+
+    
+    for (let button of buttons) {
+
+        let numberOfLetters = [
+            ["magic", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "dolphin", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
+            ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
+            ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
+            ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
+            ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
+            ]
+
+        let wordNumber = ""
+
+        let usedWords = []
+    
+        button.addEventListener("click", function chooseWord(){
+
+            wordNumber = Math.floor(Math.random() * 20)
+            
+            let gameLevel = this.getAttribute("data-type");
+
+            if (gameLevel === "6 letter words"){
+            let word = numberOfLetters[0][wordNumber]
+            if (usedWords.includes(word)){
+                //call function to run game
+                console.log(word + " already used")
+                if(usedWords.length = 19){
+                    alert("Well Done!You have completed Level 1! Choose a different level to continue.")
+                }
+            } else {
+                usedWords.push(word) 
+                console.log(word) 
+            }
+            
+            } else if (gameLevel === "7 letter words") {
+                let word = numberOfLetters[1]
+            } else if (gameLevel === "8 letter words") {
+                let word = numberOfLetters[2]
+            } else if (gameLevel === "9 letter words") {
+                let word = numberOfLetters[3]
+            } else if (gameLevel === "10 letter words") {
+                let word = numberOfLetters[4]
+            }
+
+            
+        })
+    }  
+})
 
 
 function runGame() {
@@ -30,7 +71,7 @@ function wrongLetter() {
         "assets/images/hangman/10.jpg",
     ]
     //this if statement should change the image src if letter is incorrect
-    if(){
+    if(""){
         
         document.getElementById("hangman-image").setAttribute("src","")
     }
@@ -39,35 +80,6 @@ function wrongLetter() {
 
 function gameToRun() {
 
-    let numberOfLetters = [
-    ["magic", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "dolphin", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
-    ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
-    ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
-    ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
-    ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
-    ]
-
-    let wordNumber = Math.floor(Math.random() * 20)
-
-
-    let buttons = document.getElementsByTagName("button")
-    for (let button of buttons) {
-        button.addEventListener("click", function(event){
-            let gameLevel = this.getAttribute("data-type");
-            if (data-type === "6 letter words"){
-               let word = numberOfLetters[0]
-            } else if (data-type === "7 letter words") {
-                let word = numberOfLetters[1]
-            } else if (data-type === "8 letter words") {
-                let word = numberOfLetters[2]
-            } else if (data-type === "9 letter words") {
-                let word = numberOfLetters[3]
-            } else if (data-type === "10 letter words") {
-                let word = numberOfLetters[4]
-            }
-            alert(`The word is ${"word"}`)
-        })
-    }  
 }
 
 function level1 () {
