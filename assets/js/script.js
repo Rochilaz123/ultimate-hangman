@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function chooseLevelWord(){
+document.addEventListener("DOMContentLoaded", function (){
 
     let buttons = document.getElementsByTagName("button")
 
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function chooseLevelWord(){
     for (let button of buttons) {
 
         let numberOfLetters = [
-            ["magic", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "dolphin", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
+            ["stripe", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "charge", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
             ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
             ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
             ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
@@ -25,15 +25,14 @@ document.addEventListener("DOMContentLoaded", function chooseLevelWord(){
 
             if (gameLevel === "6 letter words"){
             let word = numberOfLetters[0][wordNumber]
-            if (usedWords.includes(word)){
-                //call function to run game
+            displayWord(word)
+            if (usedWords.includes(word)){                
                 console.log(word + " already used")
-                if(usedWords.length = 19){
+                if(usedWords.length === 19){
                     alert("Well Done!You have completed Level 1! Choose a different level to continue.")
                 }
             } else {
-                usedWords.push(word) 
-                console.log(word) 
+                usedWords.push(word)                
             }
             
             } else if (gameLevel === "7 letter words") {
@@ -45,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function chooseLevelWord(){
             } else if (gameLevel === "10 letter words") {
                 let word = numberOfLetters[4]
             }
-
             
         })
     }  
@@ -78,15 +76,16 @@ function wrongLetter() {
 
 }
 
-function gameToRun() {
+function displayWord(answer) {
+    alert("word is " + answer )
+    let wordArray = answer.split("")
+    addEventListener
 
+    
 }
 
-function level1 () {
-     console.log(working)
-    //let wordNumber = Math.floor(Math.random() * 20)
-    //let newWord = [wordNumber]
-}
+displayWord(answer)
+
 
 function giveUp() {
 
