@@ -2,6 +2,14 @@
 font-family: 'Roboto Mono', monospace;
 font-family: 'Ubuntu', sans-serif; */
 
+#page1 {
+    visibility: visible;
+}
+
+#page2 {
+    visibility: hidden;
+}
+
 body {
     min-height: 100vh;
     font-family: 'Kanit', sans-serif;

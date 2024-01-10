@@ -17,34 +17,66 @@
         <h1>
         ULTIMATE HANGMAN
         </h1>
+        <div id="page1">
 
-        <nav>
-            <a href="game.html">game page</a>
-        </nav>
+            <h4>Play Now!</h4>
 
-        <h4>Play Now!</h4>
+            <p>Choose a level to start:</p>
 
-        <p>Choose a level to start:</p>
+            <div id="level-buttons-area">
+                <button class="level-buttons" id="level1" data-type="6 letter words">6 Letter Words</button>
+                <button class="level-buttons" id="level2" data-type="7 Letter Words">7 Letter Words</button>
+                <button class="level-buttons" id="level3" data-type="8 Letter Words">8 Letter Words</button>
+                <button class="level-buttons" id="level4" data-type="9 Letter Words">9 Letter Words</button>
+                <button class="level-buttons" id="level5" data-type="10 Letter Words">10 Letter Words</button>
+                <button class="level-buttons" id="level6" data-type="11 Letter Words">11 Letter Words</button>
+            </div>
 
-        <div id="level-buttons-area">
-            <button class="level-buttons" id="level1" data-type="6 letter words">6 Letter Words</button>
-            <button class="level-buttons" id="level2" data-type="7 Letter Words">7 Letter Words</button>
-            <button class="level-buttons" id="level3" data-type="8 Letter Words">8 Letter Words</button>
-            <button class="level-buttons" id="level4" data-type="9 Letter Words">9 Letter Words</button>
-            <button class="level-buttons" id="level5" data-type="10 Letter Words">10 Letter Words</button>
-            <button class="level-buttons" id="level6" data-type="11 Letter Words">11 Letter Words</button>
+            <div id="insructions">
+                <h5>How to Play:</h5>
+                <ol>
+                    <li>Choose a level</li>
+                    <li>Guess a letter in the alphabet</li>
+                    <li>If your letter is in the word, it will show</li>
+                    <li>If your letter is not in the word, it will add a part to the Hangman</li>
+                    <li>Try guess the correct word before the hangman is complete to win the game</li>
+                    <li>When the Hangman is complete, you lose</li>
+                </ol>
+            </div>
         </div>
 
-        <div id="insructions">
-            <h5>How to Play:</h5>
-            <ol>
-                <li>Choose a level</li>
-                <li>Guess a letter in the alphabet</li>
-                <li>If your letter is in the word, it will show</li>
-                <li>If your letter is not in the word, it will add a part to the Hangman</li>
-                <li>Try guess the correct word before the hangman is complete to win the game</li>
-                <li>When the Hangman is complete, you lose</li>
-            </ol>
+        <div id="page2">
+            
+        <div id="hangman-box">
+
+            <img id="hangman-image" src="assets/images/hangman/0.jpg" alt="Hangman image">
+
+        </div>
+
+        <div id="hangman-word">
+            <span id="letter-underline"></span><span id="letter-underline"></span><span id="letter-underline"></span>
+            <span id="letter-underline"></span><span id="letter-underline"></span><span id="letter-underline"></span>
+        </div>
+
+        <div id="input-letter-div">
+        <label for="input-letter">Type here:</label>
+        <input id="input-letter" type="text" maxlength="1" onkeypress="handleKeyPress(event)">
+        </div>
+
+        <div id="used-letters">
+            
+    </div>
+
+
+
+    <p id="answer"></p>
+
+    <span id="current-word"></span>
+
+    <div class = "page2-buttons" >
+        <span><button class = "game-page-buttons" id="give-up" type="submit" aria-label="give up" onclick="giveUp()" ><a href="index.html"></a>Give Up</a></button></span>
+        <span><button class = "game-page-buttons" id="choose-different-level" type="submit" aria-label="Choose a different level">Choose a different level</button></span>
+    </div>
         </div>
 
         <footer>
