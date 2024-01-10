@@ -76,7 +76,12 @@ function runGame() {
     //create an array of the letters of the word
     let wordArray = currentWord.split("")
     console.log(wordArray)
-
+// i am not sure how to make this function. i have an array of the letters of the word.
+//i have an event listener below for key presses, but i don't think it works.
+//I need to say on event of key pressed: if the key is in the wordArray, get index number
+//maybe i can make an array of spans to put the letters into on the dom and i can use that index number to push it to the correct number span
+//(maybe by using class, not id?)
+//if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image
     
     currentWord = wordArray
 }
