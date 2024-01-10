@@ -4,7 +4,8 @@ font-family: 'Ubuntu', sans-serif; */
 
 body {
     min-height: 100vh;
-    font-family: 'Kanit', sans-serif
+    font-family: 'Kanit', sans-serif;
+    background-color:rgb(212, 239, 255) ;
 }
 
 h1 {
@@ -12,7 +13,7 @@ h1 {
     text-align: center;
     font-family: 'Roboto Mono', monospace;
     font-weight: 900;
-    background-color: lightskyblue;
+    background-color: rgb(130, 193, 232);
     margin-top: 0;
     margin-bottom: 10px;
     width: 100%;
@@ -28,7 +29,7 @@ h4 {
 
 p {
     text-align: center;
-    font-size: 4vw;
+    font-size: 15px;
     margin-top: 0px;
 }
 
@@ -43,6 +44,7 @@ p {
     border: 0cap;
     border-radius: 5px;
     font-weight: 900;
+    background-color: rgb(130, 193, 232);
 }
 
 #level-buttons-area {
@@ -57,37 +59,13 @@ p {
     
 }
 
-#level1 {
-    background-color: green;
-}
-
-#level2 {
-    background-color: yellow;
-}
-
-#level3 {
-    background-color: lightblue;
-}
-
-#level4 {
-    background-color: violet;
-}
-
-#level5 {
-    background-color: orange;
-}
-
-#level6 {
-    background-color: red;
-}
-
 h5 {
     text-align: center;
     font-size: larger;
 }
 
 #insructions {
-    background-color: lightgoldenrodyellow;
+    background-color: white;
     font-size: 20px;
     text-align: left;
     padding-top: 15px;
@@ -108,10 +86,27 @@ h5 {
 
 }
 
+.page2-buttons {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+}
+  
+.game-page-buttons {
+    margin: 0 5px;
+    background-color:rgb(130, 193, 232);
+    border: 0cap;
+    border-radius: 5px;
+}
+
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
+    background-color: rgb(130, 193, 232);
 }
