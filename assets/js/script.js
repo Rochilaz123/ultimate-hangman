@@ -13,6 +13,7 @@ let wordNumber = ""
 // An array of used words so the words aren't repeated
 let usedWords = []
 
+let currentWord = "puzzle".split("")
 /**
  * once dom content loaded, the following code will be called
  */
@@ -27,43 +28,44 @@ document.addEventListener("DOMContentLoaded", function (){
     for (let button of buttons) {
 
         button.addEventListener("click", function chooseWord(){
+            if (gameLevel === "6 letter words") {
+            let levelIndex = 0;
+                        //to run other levels
+            } else if (gameLevel === "7 letter words") {
+                        levelIndex = 1;
+            } else if (gameLevel === "8 letter words") {
+                        levelIndex = 2;
+            } else if (gameLevel === "9 letter words") {
+                        levelIndex = 3;
+            } else if (gameLevel === "10 letter words") {
+                        levelIndex = 4;
+            }
 
             wordNumber = Math.floor(Math.random() * 20);
             
             let gameLevel = this.getAttribute("data-type");
             // if the level chosen is 6 letter words, choose a word from that array.
 
-            if (gameLevel === "6 letter words") {
+            
                 if (usedWords.length == 19) {
                     alert("Well Done!You have completed Level 1! Choose a different level to continue.")
                 }
                 else{
-               let word = numberOfLetters[0][wordNumber];
-               alert(word)
-                   while(usedWords.includes(word)){
+               currentWord = numberOfLetters[levelIndex][wordNumber];
+               alert(currentWord)
+                   while(usedWords.includes(currentWord)){
                         alert("This is already used.");                       
                         wordNumber = Math.floor(Math.random() * 20);
-                        word = numberOfLetters[0][wordNumber];
+                        currentWord = numberOfLetters[levelIndex][wordNumber];
                         
                         };
            
-                   usedWords.push(word);
-                   console.log(word);
-                   document.getElementById("current-word").innerHTML= word;
+                   usedWords.push(currentWord);
+                   console.log(currentWord);
+                   
                }
 
-               console.log(document.getElementById("current-word").innerText);
-            
-            //to run other levels
-            } else if (gameLevel === "7 letter words") {
-                let word = numberOfLetters[1]
-            } else if (gameLevel === "8 letter words") {
-                let word = numberOfLetters[2]
-            } else if (gameLevel === "9 letter words") {
-                let word = numberOfLetters[3]
-            } else if (gameLevel === "10 letter words") {
-                let word = numberOfLetters[4]
-            }
+
             
         }) 
     }
@@ -71,11 +73,9 @@ document.addEventListener("DOMContentLoaded", function (){
 
 
 function runGame() {
-    //Get the word from the DOM where it was saved and store in variable
-    let currentWord = document.getElementById("current-word").innerHTML
     //create an array of the letters of the word
-    let wordArray = currentWord.split("")
-    console.log(wordArray)
+    currentWord = currentWord.split("")
+    console.log(currentWord)
 // i am not sure how to make this function. i have an array of the letters of the word.
 //i have an event listener below for key presses, but i don't think it works.
 //I need to say on event of key pressed: if the key is in the wordArray, get index number
@@ -83,14 +83,14 @@ function runGame() {
 //(maybe by using class, not id?)
 //if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image
     
-    currentWord = wordArray
+    
 }
 
-//
-function handleKeyDown (event){
+
+function handleKeyPress (event){
     let keyPressed = event.key.toLowerCase();
 
-    if (wordArray.includes(keyPressed)){
+    if (currentWord.includes(keyPressed)){
       correctLetter();
     } else {
       wrongLetter(keyPressed);
@@ -139,15 +139,16 @@ function wrongLetter(parameter) {
 }
 
     
-// If give up is clicked, calls giveUp function
-document.getElementById("give-up").addEventListener("click" , giveUp);
+
+
 
 /**
  * updates losses and runs new game
  */
 function giveUp() {
-    updateLosses();
     console.log("give up working");
+    updateLosses();
+    
     //run new game
 }
 
