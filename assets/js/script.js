@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function (){
             let word = numberOfLetters[0][wordNumber]
             if (usedWords.includes(word)){                
                 console.log(word + " already used")
+
                 if(usedWords.length === 19){
                     alert("Well Done!You have completed Level 1! Choose a different level to continue.")
                 }
@@ -52,9 +53,11 @@ document.addEventListener("DOMContentLoaded", function (){
 
 
 function runGame(word) {
-    displayWord(word)
+   // displayWord(word)
 
     let wordArray = word.split("")
+    let currentWord = document.getElementById("current-word").innerHTML
+    currentWord = wordArray
 }
 
 function handleKeyDown (event){
@@ -68,7 +71,8 @@ function handleKeyDown (event){
   }
 
 let incorrectLetters = ""
-incorrectLetters = incorrectLetters + "s"
+incorrectLetters = incorrectLetters + ""
+
 
 /**
  * This code updates the hangman image
@@ -97,7 +101,7 @@ function wrongLetter(parameter) {
     
     document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage])
 
-    console.log(`Sorry...${parameter}is not in the word`)
+    console.log(`Sorry...${parameter} is not in the word`)
     
 
 }
@@ -107,13 +111,24 @@ function displayWord(word) {
     
 }
 
+document.getElementById("give-up").addEventListener("click" , giveUp())
 function giveUp() {
+    updateScore()
+    console.log("give up working")
 
 }
 
-function chooseDifferentLevel() {
+/**
+ * When Choose different level button clicked, exits current game and goes back to landing page and adds one to losses.
+ */
+document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
+    
+    updateLosses()
+    window.location.href = "index.html"
 
-}
+} )
+
+
 /**
  * Gets the current score and adds 1
  */
