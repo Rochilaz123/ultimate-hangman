@@ -13,7 +13,9 @@ let wordNumber = ""
 // An array of used words so the words aren't repeated
 let usedWords = []
 
-let currentWord = "puzzle".split("")
+let currentWord = ""
+
+let gameLevel
 /**
  * once dom content loaded, the following code will be called
  */
@@ -27,10 +29,11 @@ document.addEventListener("DOMContentLoaded", function (){
      */
     for (let button of buttons) {
 
+        let levelIndex = 0;
+
         button.addEventListener("click", function chooseWord(){
             if (gameLevel === "6 letter words") {
-            let levelIndex = 0;
-                        //to run other levels
+                        levelIndex = 0;
             } else if (gameLevel === "7 letter words") {
                         levelIndex = 1;
             } else if (gameLevel === "8 letter words") {
@@ -43,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function (){
 
             wordNumber = Math.floor(Math.random() * 20);
             
-            let gameLevel = this.getAttribute("data-type");
+            gameLevel = this.getAttribute("data-type");
             // if the level chosen is 6 letter words, choose a word from that array.
 
             
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function (){
                 }
                 else{
                currentWord = numberOfLetters[levelIndex][wordNumber];
-               alert(currentWord)
+               runGame();
                    while(usedWords.includes(currentWord)){
                         alert("This is already used.");                       
                         wordNumber = Math.floor(Math.random() * 20);
@@ -75,7 +78,8 @@ document.addEventListener("DOMContentLoaded", function (){
 function runGame() {
     //create an array of the letters of the word
     currentWord = currentWord.split("")
-    console.log(currentWord)
+    document.getElementById("page1").style.visibility="hidden"
+    document.getElementById("page2").style.visibility="visible"
 // i am not sure how to make this function. i have an array of the letters of the word.
 //i have an event listener below for key presses, but i don't think it works.
 //I need to say on event of key pressed: if the key is in the wordArray, get index number
@@ -158,7 +162,7 @@ function giveUp() {
 document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
     
     updateLosses();
-    window.location.href = "index.html";
+    
 
 } )
 

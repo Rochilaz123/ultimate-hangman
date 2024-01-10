@@ -8,6 +8,10 @@ font-family: 'Ubuntu', sans-serif; */
 
 #page2 {
     visibility: hidden;
+    position: fixed;
+    top: 30px;
+    margin: auto;
+    width: 100%;
 }
 
 body {
@@ -145,6 +149,7 @@ h5 {
     bottom: 100px;
     left: 0;
     right: 0;
+
 }
   
 .game-page-buttons {
