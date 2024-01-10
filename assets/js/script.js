@@ -28,26 +28,31 @@ document.addEventListener("DOMContentLoaded", function (){
 
         button.addEventListener("click", function chooseWord(){
 
-            wordNumber = Math.floor(Math.random() * 20)
+            wordNumber = Math.floor(Math.random() * 20);
             
             let gameLevel = this.getAttribute("data-type");
             // if the level chosen is 6 letter words, choose a word from that array.
-            if (gameLevel === "6 letter words"){
-                
-            let word = numberOfLetters[0][wordNumber]
 
-                if (usedWords.includes(word)){                
-                    console.log(word + " already used")
+            if (gameLevel === "6 letter words") {
+                if (usedWords.length == 19) {
+                    alert("Well Done!You have completed Level 1! Choose a different level to continue.")
+                }
+                else{
+               let word = numberOfLetters[0][wordNumber];
+               alert(word)
+                   while(usedWords.includes(word)){
+                        alert("This is already used.");                       
+                        wordNumber = Math.floor(Math.random() * 20);
+                        word = numberOfLetters[0][wordNumber];
+                        
+                        };
+           
+                   usedWords.push(word);
+                   console.log(word);
+                   document.getElementById("current-word").innerHTML= word;
+               }
 
-                    if(usedWords.length === 19){
-                        //choose another level without incrementing losses
-                        alert("Well Done!You have completed Level 1! Choose a different level to continue.")
-                    } else {
-                    
-            } else {
-                runGame(word)
-                usedWords.push(word)             
-            }
+               console.log(document.getElementById("current-word").innerText);
             
             //to run other levels
             } else if (gameLevel === "7 letter words") {
@@ -60,16 +65,19 @@ document.addEventListener("DOMContentLoaded", function (){
                 let word = numberOfLetters[4]
             }
             
-        })
-    }  
+        }) 
+    }
 })
 
 
-function runGame(word) {
-   // displayWord(word)
-
-    let wordArray = word.split("")
+function runGame() {
+    //Get the word from the DOM where it was saved and store in variable
     let currentWord = document.getElementById("current-word").innerHTML
+    //create an array of the letters of the word
+    let wordArray = currentWord.split("")
+    console.log(wordArray)
+
+    
     currentWord = wordArray
 }
 
@@ -125,10 +133,7 @@ function wrongLetter(parameter) {
 
 }
 
-function displayWord(word) {
-    alert("word is " + word );
     
-}
 // If give up is clicked, calls giveUp function
 document.getElementById("give-up").addEventListener("click" , giveUp);
 
