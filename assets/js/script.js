@@ -1,3 +1,4 @@
+//Array of levels, each level is an array of the words for that level.
 let numberOfLetters = [
     ["stripe", "bright", "giggle", "puzzle", "jungle", "wisdom", "animal", "cheese", "monkey", "rocket", "charge", "pirate", "garden", "quench", "sphere", "unpack", "yellow", "father", "window", "banana"],
     ["desktop", "adverse", "benefit", "exclude", "edition", "fifteen", "mascara", "generic", "acrylic", "cryptic", "removed", "diamond", "invalid", "ashamed", "steward", "mustard", "leisure", "keynote", "turmoil", "whether"],
@@ -6,37 +7,49 @@ let numberOfLetters = [
     ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
     ]
 
+//The index number of the word from the array, randomly generated when user clicks a level button
 let wordNumber = ""
 
+// An array of used words so the words aren't repeated
 let usedWords = []
 
+/**
+ * once dom content loaded, the following code will be called
+ */
 document.addEventListener("DOMContentLoaded", function (){
 
     let buttons = document.getElementsByTagName("button")
 
-    
+    /**
+     * When button is clicked, a randon number is generated to choose the number word from the array of words, 
+     * and the index of the array numberOfLetters is determined by the variable gameLevel based on the if statement
+     */
     for (let button of buttons) {
 
-    
         button.addEventListener("click", function chooseWord(){
 
             wordNumber = Math.floor(Math.random() * 20)
             
             let gameLevel = this.getAttribute("data-type");
-
+            // if the level chosen is 6 letter words, choose a word from that array.
             if (gameLevel === "6 letter words"){
+                
             let word = numberOfLetters[0][wordNumber]
-            if (usedWords.includes(word)){                
-                console.log(word + " already used")
 
-                if(usedWords.length === 19){
-                    alert("Well Done!You have completed Level 1! Choose a different level to continue.")
-                }
+                if (usedWords.includes(word)){                
+                    console.log(word + " already used")
+
+                    if(usedWords.length === 19){
+                        //choose another level without incrementing losses
+                        alert("Well Done!You have completed Level 1! Choose a different level to continue.")
+                    } else {
+                    
             } else {
                 runGame(word)
                 usedWords.push(word)             
             }
             
+            //to run other levels
             } else if (gameLevel === "7 letter words") {
                 let word = numberOfLetters[1]
             } else if (gameLevel === "8 letter words") {
@@ -60,13 +73,14 @@ function runGame(word) {
     currentWord = wordArray
 }
 
+//
 function handleKeyDown (event){
-    let keyPressed = event.key.toLowerCase()
+    let keyPressed = event.key.toLowerCase();
 
     if (wordArray.includes(keyPressed)){
-      correctLetter()
+      correctLetter();
     } else {
-      wrongLetter(keyPressed)
+      wrongLetter(keyPressed);
     }
   }
 
@@ -93,29 +107,38 @@ function wrongLetter(parameter) {
         "assets/images/hangman/10.jpg",
     ]
 
-    let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src")
+    let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src");
 
-    let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc)
+    let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc);
 
-    let newHangmanImage = lastHangmanImage + 1
+    let newHangmanImage = lastHangmanImage + 1;
     
-    document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage])
+    document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage]);
 
-    console.log(`Sorry...${parameter} is not in the word`)
+    console.log(`Sorry...${parameter} is not in the word`);
+
+    if(newHangmanImage === "assets/images/hangman/10.jpg" ) {
+        updateLosses();
+        //run new game
+    }
     
 
 }
 
 function displayWord(word) {
-    alert("word is " + word )
+    alert("word is " + word );
     
 }
+// If give up is clicked, calls giveUp function
+document.getElementById("give-up").addEventListener("click" , giveUp);
 
-document.getElementById("give-up").addEventListener("click" , giveUp())
+/**
+ * updates losses and runs new game
+ */
 function giveUp() {
-    updateScore()
-    console.log("give up working")
-
+    updateLosses();
+    console.log("give up working");
+    //run new game
 }
 
 /**
@@ -123,8 +146,8 @@ function giveUp() {
  */
 document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
     
-    updateLosses()
-    window.location.href = "index.html"
+    updateLosses();
+    window.location.href = "index.html";
 
 } )
 
@@ -150,9 +173,9 @@ function updateLosses(){
 //if the letter is incorrect it will cal the wrong letter function
 
 function checkLetter() {
-    addEventListener
+
 }
 
 function correctLetter() {
-
+    
 }
