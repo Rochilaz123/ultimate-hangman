@@ -24,7 +24,7 @@ let levelIndex = 0;
  */
 document.addEventListener("DOMContentLoaded", function (){
 
-    let buttons = document.getElementsByTagName("button")
+    let buttons = document.getElementsByClassName("level-buttons")
 
     /**
      * When button is clicked, a randon number is generated to choose the number word from the array of words, 
@@ -144,6 +144,7 @@ function wrongLetter(parameter) {
     if(newHangmanImage === "assets/images/hangman/10.jpg" ) {
         updateLosses();
         runGame();
+        hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src")="assets/images/hangman/0.jpg"
     }
 }
 
