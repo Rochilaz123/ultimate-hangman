@@ -94,7 +94,7 @@ function handleKeyPress (event){
     let keyPressed = event.key.toLowerCase();
 
     if (currentWord.includes(keyPressed)){
-      correctLetter();
+      correctLetter(keyPressed);
     } else {
       wrongLetter(keyPressed);
     }
@@ -102,9 +102,11 @@ function handleKeyPress (event){
 
 let incorrectLetters = ""
 
-
-function correctLetter() {
-    
+//this function should find the index of the letter pressed within the word array, 
+//and should push the letter into the same number index of the array of that class in html
+function correctLetter(parameter) {
+    let letter = currentWord.indexOf(parameter)
+    document.getElementsByClass("letter-box").innerHTML[letter]=parameter
 }
 
 /**
@@ -143,13 +145,7 @@ function wrongLetter(parameter) {
         updateLosses();
         runGame();
     }
-    
-
 }
-
-    
-
-
 
 /**
  * updates losses and runs new game
@@ -171,7 +167,6 @@ document.getElementById("choose-different-level").addEventListener("click", func
     document.getElementById("page2").style.visibility="hidden"
     console.log("Choose diff level working")
 } )
-
 
 /**
  * Gets the current score and adds 1
