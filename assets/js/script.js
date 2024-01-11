@@ -106,7 +106,7 @@ let incorrectLetters = ""
 //and should push the letter into the same number index of the array of that class in html
 function correctLetter(parameter) {
     let letter = currentWord.indexOf(parameter)
-    document.getElementsByClass("letter-box").innerHTML[letter]=parameter
+    document.getElementsByClassName("letter-box")[letter].innerHTML = parameter
 }
 
 /**
