@@ -82,13 +82,11 @@ function runGame() {
     document.getElementById("page1").style.visibility="hidden"
     document.getElementById("page2").style.visibility="visible"
 // i am not sure how to make this function. i have an array of the letters of the word.
-//i have an event listener below for key presses, but i don't think it works.
+
 //I need to say on event of key pressed: if the key is in the wordArray, get index number
 //maybe i can make an array of spans to put the letters into on the dom and i can use that index number to push it to the correct number span
 //(maybe by using class, not id?)
-//if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image
-    
-    
+//if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image   
 }
 
 
@@ -103,12 +101,14 @@ function handleKeyPress (event){
   }
 
 let incorrectLetters = ""
-incorrectLetters = incorrectLetters + ""
 
+
+function correctLetter() {
+    
+}
 
 /**
- * This code updates the hangman image
- * @param {*} parameter 
+ * This code updates the hangman image* @param {*} parameter 
  */
 function wrongLetter(parameter) {
     let hangmanImageSrcs = [
@@ -130,14 +130,18 @@ function wrongLetter(parameter) {
     let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc);
 
     let newHangmanImage = lastHangmanImage + 1;
+
+    incorrectLetters = incorrectLetters + "    " + parameter
     
+    document.getElementById("used-letters").innerHTML=incorrectLetters
+
     document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage]);
 
     console.log(`Sorry...${parameter} is not in the word`);
 
     if(newHangmanImage === "assets/images/hangman/10.jpg" ) {
         updateLosses();
-        //run new game
+        runGame();
     }
     
 
@@ -193,6 +197,3 @@ function checkLetter() {
 
 }
 
-function correctLetter() {
-    
-}

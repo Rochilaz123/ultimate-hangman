@@ -1,6 +1,8 @@
-/* font-family: 'Kanit', sans-serif;
-font-family: 'Roboto Mono', monospace;
-font-family: 'Ubuntu', sans-serif; */
+body {
+    min-height: 100vh;
+    font-family: 'Kanit', sans-serif;
+    background-color:rgb(212, 239, 255) ;
+}
 
 #page1 {
     visibility: visible;
@@ -9,15 +11,10 @@ font-family: 'Ubuntu', sans-serif; */
 #page2 {
     visibility: hidden;
     position: fixed;
-    top: 30px;
+    top: 75px;
+    /*Add media query: if screen is bigger than x , top = 130px*/
     margin: auto;
     width: 100%;
-}
-
-body {
-    min-height: 100vh;
-    font-family: 'Kanit', sans-serif;
-    background-color:rgb(212, 239, 255) ;
 }
 
 h1 {
