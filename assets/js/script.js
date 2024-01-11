@@ -16,6 +16,9 @@ let usedWords = []
 let currentWord = ""
 
 let gameLevel
+
+let levelIndex = 0;
+
 /**
  * once dom content loaded, the following code will be called
  */
@@ -28,8 +31,6 @@ document.addEventListener("DOMContentLoaded", function (){
      * and the index of the array numberOfLetters is determined by the variable gameLevel based on the if statement
      */
     for (let button of buttons) {
-
-        let levelIndex = 0;
 
         button.addEventListener("click", function chooseWord(){
             if (gameLevel === "6 letter words") {
@@ -152,8 +153,8 @@ function wrongLetter(parameter) {
 function giveUp() {
     console.log("give up working");
     updateLosses();
-    
-    //run new game
+    currentWord = numberOfLetters[levelIndex][wordNumber];
+    runGame()
 }
 
 /**
@@ -162,8 +163,9 @@ function giveUp() {
 document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
     
     updateLosses();
-    
-
+    document.getElementById("page1").style.visibility="visible"
+    document.getElementById("page2").style.visibility="hidden"
+    console.log("Choose diff level working")
 } )
 
 
