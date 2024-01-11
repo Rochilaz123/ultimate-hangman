@@ -122,6 +122,15 @@ h5 {
     height: 30px;
 }
 
+.letter-box {
+    border-bottom: 3px solid black;
+    display: inline-block;
+    padding: 8px;
+    font-size:15px;
+    width: 5px;
+    margin: 5px;
+}
+
 #input-letter-div{
     padding: 5px;
     margin: auto;
