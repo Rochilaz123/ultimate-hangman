@@ -5,24 +5,31 @@ let numberOfLetters = [
     ["absolute", "mountain", "sentence", "children", "although", "analysis", "physical", "remember", "marriage", "consider", "presence", "birthday", "dialogue", "frequent", "register", "universe", "whatever", "scenario", "educator", "discover"],
     ["religious", "operation", "developed", "president", "published", "important", "beautiful", "otherwise", "explained", "confusion", "introduce", "wonderful", "complaint", "marketing", "something", "certainly", "universal", "yesterday", "vegetable", "technique"],
     ["agriculture", "consumption", "theoretical", "imagination", "limitations", "expenditure", "integration", "perspective", "destruction", "probability", "governments", "personality", "wakefulness", "undisturbed", "variational", "ventilating", "terminology", "restriction", "manufacture", "lengthening", "justifiably"]
-    ]
+]
 
 //The index number of the word from the array, randomly generated when user clicks a level button
 let wordNumber = ""
 
 // An array of used words so the words aren't repeated
-let usedWords = []
+let usedWords = [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+]
 
 let currentWord = ""
 
-let gameLevel
+let gameLevel = ""
 
 let levelIndex = 0;
 
 /**
  * once dom content loaded, the following code will be called
  */
-document.addEventListener("DOMContentLoaded", function (){
+document.addEventListener("DOMContentLoaded", function () {
 
     let buttons = document.getElementsByClassName("level-buttons")
 
@@ -32,46 +39,46 @@ document.addEventListener("DOMContentLoaded", function (){
      */
     for (let button of buttons) {
 
-        button.addEventListener("click", function chooseWord(){
-            if (gameLevel === "6 letter words") {
-                        levelIndex = 0;
-            } else if (gameLevel === "7 letter words") {
-                        levelIndex = 1;
-            } else if (gameLevel === "8 letter words") {
-                        levelIndex = 2;
-            } else if (gameLevel === "9 letter words") {
-                        levelIndex = 3;
-            } else if (gameLevel === "10 letter words") {
-                        levelIndex = 4;
+        button.addEventListener("click", function chooseWord() {
+            gameLevel = this.id;
+            if (gameLevel === "level1") {
+                levelIndex = 0;
+            } else if (gameLevel === "level2") {
+                levelIndex = 1;
+            } else if (gameLevel === "level3") {
+                levelIndex = 2;
+            } else if (gameLevel === "level4") {
+                levelIndex = 3;
+            } else if (gameLevel === "level5") {
+                levelIndex = 4;
+            } else if (gameLevel === "level6") {
+                levelIndex = 5;
             }
 
             wordNumber = Math.floor(Math.random() * 20);
-            
+
             gameLevel = this.getAttribute("data-type");
             // if the level chosen is 6 letter words, choose a word from that array.
 
-            
-                if (usedWords.length == 19) {
-                    alert("Well Done!You have completed Level 1! Choose a different level to continue.")
-                }
-                else{
-               currentWord = numberOfLetters[levelIndex][wordNumber];
-               runGame();
-                   while(usedWords.includes(currentWord)){
-                        alert("This is already used.");                       
-                        wordNumber = Math.floor(Math.random() * 20);
-                        currentWord = numberOfLetters[levelIndex][wordNumber];
-                        
-                        };
-           
-                   usedWords.push(currentWord);
-                   console.log(currentWord);
-                   
-               }
 
+            if (usedWords[levelIndex].length == 19) {
+                alert(`Well Done!You have completed level ${levelIndex+1}! Choose a different level to continue.`)
+            }
+            else {
+                currentWord = numberOfLetters[levelIndex][wordNumber];
+                runGame();
+                while (usedWords[levelIndex].includes(currentWord)) {
+                    alert("This is already used.");
+                    wordNumber = Math.floor(Math.random() * 20);
+                    currentWord = numberOfLetters[levelIndex][wordNumber];
 
-            
-        }) 
+                };
+
+                usedWords[levelIndex].push(currentWord);
+                console.log(currentWord);
+
+            }
+        })
     }
 })
 
@@ -79,34 +86,52 @@ document.addEventListener("DOMContentLoaded", function (){
 function runGame() {
     //create an array of the letters of the word
     currentWord = currentWord.split("")
-    document.getElementById("page1").style.visibility="hidden"
-    document.getElementById("page2").style.visibility="visible"
-// i am not sure how to make this function. i have an array of the letters of the word.
+    document.getElementById("page1").style.visibility = "hidden"
+    let lines = ""
+    for(let i = 0; i < currentWord.length; i++){
+        lines += '<span class = "letter-box" id = "letter-box-'+(i+1)+'"></span>';
+    }
+    document.getElementById("hangman-word").innerHTML = lines;
+    document.getElementById("page2").style.visibility = "visible"
+    document.getElementById("used-letters").innerHTML = "";
+    document.getElementsByClassName("letter-box").innerHTML = "";
+    // i am not sure how to make this function. i have an array of the letters of the word.
 
-//I need to say on event of key pressed: if the key is in the wordArray, get index number
-//maybe i can make an array of spans to put the letters into on the dom and i can use that index number to push it to the correct number span
-//(maybe by using class, not id?)
-//if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image   
+    //I need to say on event of key pressed: if the key is in the wordArray, get index number
+    //maybe i can make an array of spans to put the letters into on the dom and i can use that index number to push it to the correct number span
+    //(maybe by using class, not id?)
+    //if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image   
 }
 
 
-function handleKeyPress (event){
+function handleKeyPress(event) {
     let keyPressed = event.key.toLowerCase();
 
-    if (currentWord.includes(keyPressed)){
-      correctLetter(keyPressed);
+    if (currentWord.includes(keyPressed)) {
+        correctLetter(keyPressed);
+
     } else {
-      wrongLetter(keyPressed);
+        wrongLetter(keyPressed);
+        document.getElementById("input-letter").value = ""
     }
-  }
+}
 
 let incorrectLetters = ""
 
 //this function should find the index of the letter pressed within the word array, 
 //and should push the letter into the same number index of the array of that class in html
 function correctLetter(parameter) {
-    let letter = currentWord.indexOf(parameter)
-    document.getElementsByClassName("letter-box")[letter].innerHTML = parameter
+    document.getElementById("input-letter").setAttribute("value", "")
+    let letterIndex = currentWord.indexOf(parameter);
+    while (letterIndex > -1) {
+        document.getElementsByClassName("letter-box")[letterIndex].innerHTML = parameter
+        // Checking that we are not searching past the length of the word array.
+        if (letterIndex + 1 >= currentWord.length) {
+            letterIndex = -1
+        } else {
+            letterIndex = currentWord.indexOf(parameter, letterIndex + 1);
+        }
+    }
 }
 
 /**
@@ -116,7 +141,7 @@ function wrongLetter(parameter) {
     let hangmanImageSrcs = [
         "assets/images/hangman/0.jpg",
         "assets/images/hangman/1.jpg",
-        "assets/images/hangman/2.jpg", 
+        "assets/images/hangman/2.jpg",
         "assets/images/hangman/3.jpg",
         "assets/images/hangman/4.jpg",
         "assets/images/hangman/5.jpg",
@@ -126,25 +151,26 @@ function wrongLetter(parameter) {
         "assets/images/hangman/9.jpg",
         "assets/images/hangman/10.jpg",
     ]
-
+    //get current source of hangman image
     let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src");
-
+    //find html of the current source of hangman image
     let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc);
-
+    //update hangman image index to the next one in the array
     let newHangmanImage = lastHangmanImage + 1;
-
-    incorrectLetters = incorrectLetters + "    " + parameter
-    
-    document.getElementById("used-letters").innerHTML=incorrectLetters
-
+    //Change hangman image source to the one in the array with the updated index number
     document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage]);
+    //update incorrect letters
 
-    console.log(`Sorry...${parameter} is not in the word`);
 
-    if(newHangmanImage === "assets/images/hangman/10.jpg" ) {
+    incorrectLetters = incorrectLetters + "    " + parameter;
+    //show updated incorrect letters in used-letters div
+    document.getElementById("used-letters").innerHTML = incorrectLetters;
+
+
+    if (newHangmanImage === 9) {
         updateLosses();
         runGame();
-        hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src")="assets/images/hangman/0.jpg"
+        hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", "assets/images/hangman/0.jpg")
     }
 }
 
@@ -162,12 +188,12 @@ function giveUp() {
  * When Choose different level button clicked, exits current game and goes back to landing page and adds one to losses.
  */
 document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
-    
+
     updateLosses();
-    document.getElementById("page1").style.visibility="visible"
-    document.getElementById("page2").style.visibility="hidden"
+    document.getElementById("page1").style.visibility = "visible"
+    document.getElementById("page2").style.visibility = "hidden"
     console.log("Choose diff level working")
-} )
+})
 
 /**
  * Gets the current score and adds 1
@@ -180,7 +206,7 @@ function updateScore() {
 /**
  * get the number of game losses and adds 1
  */
-function updateLosses(){
+function updateLosses() {
     let oldLosses = parseInt(document.getElementById("losses").innerText);
     document.getElementById("losses").innerText = ++oldLosses;
 }

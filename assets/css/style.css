@@ -107,7 +107,7 @@ h5 {
     background-color: aliceblue;
     margin-top: 10px;
     margin: auto;
-    height: 10vh;
+    height: 5vh;
     width: 50vw;
 
 }
@@ -116,7 +116,7 @@ h5 {
     width: fit-content;
     margin: auto;
     background-color: aliceblue;
-    height: 30px;
+    height: fit-content;
 }
 
 .letter-box {
