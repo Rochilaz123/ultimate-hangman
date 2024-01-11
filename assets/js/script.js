@@ -121,7 +121,7 @@ let incorrectLetters = ""
 //this function should find the index of the letter pressed within the word array, 
 //and should push the letter into the same number index of the array of that class in html
 function correctLetter(parameter) {
-    document.getElementById("input-letter").setAttribute("value", "")
+    
     let letterIndex = currentWord.indexOf(parameter);
     while (letterIndex > -1) {
         document.getElementsByClassName("letter-box")[letterIndex].innerHTML = parameter
@@ -215,7 +215,8 @@ function updateLosses() {
 //if the letter is correct, it will call the correct letter functio
 //if the letter is incorrect it will cal the wrong letter function
 
-function checkLetter() {
+let inputBox = document.getElementById("input-letter")
 
-}
-
+inputBox.addEventListener('input', function(){
+   setInterval(function () {inputBox.value = ""}, 1000)}
+)
