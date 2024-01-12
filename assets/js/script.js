@@ -158,7 +158,7 @@ function correctLetter(parameter) {
             document.getElementById("used-letters").innerHTML = "";
             document.getElementsByClassName("letter-box").innerHTML = "";
             document.getElementById("input-letter").focus();
-            alert("You Won! Click ok to continue");
+            // alert("You Won! Click ok to continue");
         }
         // Checking that we are not searching past the length of the word array.
         if (letterIndex + 1 >= currentWord.length) {
