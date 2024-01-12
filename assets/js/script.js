@@ -86,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     wordNumber = Math.floor(Math.random() * 20);
                     currentWord = numberOfLetters[levelIndex][wordNumber];
                 }
+                reset()
                 // Add the newest word to the used words
                 usedWords[levelIndex].push(currentWord);
                 console.log(currentWord);
@@ -123,8 +124,9 @@ function correctLetter(parameter) {
             updateScore();
             // document.getElementById("page1").style.visibility = "visible";
             //   document.getElementById("page2").style.visibility = "hidden";
-            hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
-            counter = 0;
+           // hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
+            //counter = 0;
+            reset()
             document.getElementById("used-letters").innerHTML = "";
             document.getElementsByClassName("letter-box").innerHTML = "";
             document.getElementById("input-letter").focus();
@@ -196,6 +198,7 @@ function giveUp() {
     console.log("give up working");
     updateLosses();
     currentWord = numberOfLetters[levelIndex][wordNumber];
+    reset()
     runGame();
 }
 
@@ -235,3 +238,9 @@ inputBox.addEventListener('input', function () {
     setInterval(function () { inputBox.value = ""; }, 1000);
 }
 );
+
+function reset(){
+    counter = 0;
+    incorrectLetters= ""
+    hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
+}
