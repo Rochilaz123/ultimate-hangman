@@ -2,8 +2,12 @@
 
 Ultimate Hangman is a classic hangman game. Ultimate Hangman includes different difficulty levels and will lead to lots of fun for all players. Anyone who can read can play this game from children, to adults, to seniors!
  
-![Responsice Mockup](readme-assets/AmIResponsive1.PNG)
-![Responsice Mockup](readme-assets/AmIResponsive2.PNG)
+![Responsice Mockup page 1](readme-assets/AmIResponsive1.PNG)
+![Responsice Mockup page 2](readme-assets/AmIResponsive2.PNG)
+
+### Wireframes
+![Wireframes Desktop](readme-assets/desktop-wireframes.jpg)
+![Wireframes Phone](readme-assets/phone-wireframes.jpg)
 
 ## Features 
 
