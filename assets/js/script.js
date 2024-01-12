@@ -75,22 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
             wordNumber = Math.floor(Math.random() * 20);
 
             gameLevel = this.getAttribute("data-type");
-            // if the level chosen is 6 letter words, choose a word from that array.
-
-
+            // Check if all the words of that level have been used yet. if they have, it gives an alertthat the level is complete.
             if (usedWords[levelIndex].length == 19) {
                 alert(`Well Done!You have completed level ${levelIndex + 1}! Choose a different level to continue.`);
-            }
-            else {
+                // If the words haven't all been used, choose a word.
+            } else {
                 currentWord = numberOfLetters[levelIndex][wordNumber];
                 runGame();
                 while (usedWords[levelIndex].includes(currentWord)) {
-                    alert("This is already used.");
                     wordNumber = Math.floor(Math.random() * 20);
                     currentWord = numberOfLetters[levelIndex][wordNumber];
-
                 }
-
+                // Add the newest word to the used words
                 usedWords[levelIndex].push(currentWord);
                 console.log(currentWord);
 
@@ -115,32 +111,6 @@ function runGame() {
     document.getElementById("input-letter").focus();
 }
 
-/**
- * 
- */
-// function correctLetter(parameter) {
-//     console.log(parameter);
-//     let letterNumber = 0;
-//     while (letterNumber < currentWord.length) {
-//         let letter = currentWord.indexOf(parameter, letterNumber);
-//         document.getElementById("letter-box-" + (letter + 1)).innerHTML = parameter;
-//         counter++;
-//         letterNumber = letter;
-//         letterNumber++;
-//     }
-//     if (counter == currentWord.length) {
-//         counter = 0;
-//         updateScore();
-//         alert("You win! Click ok to play again");
-//         document.getElementById("page1").style.visibility = "visible";
-//         document.getElementById("page2").style.visibility = "hidden";
-//         runGame();
-
-
-//     }
-// }
-
-
 function correctLetter(parameter) {
 
 
@@ -151,14 +121,20 @@ function correctLetter(parameter) {
         //what should happen if user wins
         if (counter === currentWord.length) {
             updateScore();
-            document.getElementById("page1").style.visibility = "visible";
-            document.getElementById("page2").style.visibility = "hidden";
+            // document.getElementById("page1").style.visibility = "visible";
+            //   document.getElementById("page2").style.visibility = "hidden";
             hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
-            // counter = 0;
+            counter = 0;
             document.getElementById("used-letters").innerHTML = "";
             document.getElementsByClassName("letter-box").innerHTML = "";
             document.getElementById("input-letter").focus();
-            // alert("You Won! Click ok to continue");
+
+            setTimeout(() => {
+                alert("You Won! Click ok to continue");
+                document.getElementById("page1").style.visibility = "visible";
+                document.getElementById("page2").style.visibility = "hidden";
+            }, 3000)
+
         }
         // Checking that we are not searching past the length of the word array.
         if (letterIndex + 1 >= currentWord.length) {
@@ -256,6 +232,6 @@ function updateLosses() {
 let inputBox = document.getElementById("input-letter");
 
 inputBox.addEventListener('input', function () {
-    setInterval(function () { inputBox.value = "";}, 1000);
+    setInterval(function () { inputBox.value = ""; }, 1000);
 }
 );
