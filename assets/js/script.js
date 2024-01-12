@@ -119,6 +119,28 @@ function runGame() {
  * 
  */
 function correctLetter(parameter) {
+    let letterNumber = 0;
+    while (letterNumber < currentWord.length) {
+        let letter = currentWord.indexOf(parameter, letterNumber);
+        document.getElementById("letter-box-" + (letter + 1)).innerHTML = parameter;
+        counter++;
+        letterNumber = letter;
+        letterNumber++;
+    }
+    if (counter == currentWord.length) {
+        counter = 0;
+        updateScore();
+        alert("You win! Click ok to play again")
+        document.getElementById("page1").style.visibility = "visible"
+        document.getElementById("page2").style.visibility = "hidden"
+        runGame();
+
+
+    }
+}
+
+
+function correctLetter(parameter) {
     
     
     let letterIndex = currentWord.indexOf(parameter);
