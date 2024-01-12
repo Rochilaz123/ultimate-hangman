@@ -29,6 +29,20 @@ let levelIndex = 0;
 
 let counter = 0
 
+let hangmanImageSrcs = [
+    "assets/images/hangman/0.jpg",
+    "assets/images/hangman/1.jpg",
+    "assets/images/hangman/2.jpg",
+    "assets/images/hangman/3.jpg",
+    "assets/images/hangman/4.jpg",
+    "assets/images/hangman/5.jpg",
+    "assets/images/hangman/6.jpg",
+    "assets/images/hangman/7.jpg",
+    "assets/images/hangman/8.jpg",
+    "assets/images/hangman/9.jpg",
+    "assets/images/hangman/10.jpg",
+]
+
 /**
  * once dom content loaded, the following code will be called
  */
@@ -42,8 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
      */
     for (let button of buttons) {
 
-        button.addEventListener("click", chooseWord)
-         function chooseWord() {
+        button.addEventListener("click", function chooseWord() {
             gameLevel = this.id;
             if (gameLevel === "level1") {
                 levelIndex = 0;
@@ -82,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(currentWord);
 
             }
-        }
+        })
     }
 })
 
@@ -112,10 +125,18 @@ function correctLetter(parameter) {
     while (letterIndex > -1) {
         document.getElementsByClassName("letter-box")[letterIndex].innerHTML = parameter
         counter += 1
+        //what should happen if user wins
         if (counter === currentWord.length){
+            alert("You Won! Click ok to continue" )
             updateScore()
-            alert("You win! Click ok to play again." )
-            chooseWord()
+            document.getElementById("page1").style.visibility = "visible"
+            document.getElementById("page2").style.visibility = "hidden"
+            hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
+            counter = 0
+            document.getElementById("used-letters").innerHTML = "";
+            document.getElementsByClassName("letter-box").innerHTML = "";
+            document.getElementById("input-letter").focus();
+
         }
         // Checking that we are not searching past the length of the word array.
         if (letterIndex + 1 >= currentWord.length) {
@@ -135,7 +156,6 @@ function handleKeyPress(event) {
 
     } else {
         wrongLetter(keyPressed);
-        document.getElementById("input-letter").value = ""
     }
 }
 
@@ -147,19 +167,7 @@ let incorrectLetters = ""
  * This code updates the hangman image* @param {*} parameter 
  */
 function wrongLetter(parameter) {
-    let hangmanImageSrcs = [
-        "assets/images/hangman/0.jpg",
-        "assets/images/hangman/1.jpg",
-        "assets/images/hangman/2.jpg",
-        "assets/images/hangman/3.jpg",
-        "assets/images/hangman/4.jpg",
-        "assets/images/hangman/5.jpg",
-        "assets/images/hangman/6.jpg",
-        "assets/images/hangman/7.jpg",
-        "assets/images/hangman/8.jpg",
-        "assets/images/hangman/9.jpg",
-        "assets/images/hangman/10.jpg",
-    ]
+
     //get current source of hangman image
     let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src");
     //find html of the current source of hangman image
@@ -177,7 +185,8 @@ function wrongLetter(parameter) {
     if (newHangmanImage === 11) {
         alert("Sorry, you lose. Click ok to play again!")
         updateLosses();
-        chooseWord()
+        document.getElementById("page1").style.visibility = "visible"
+        document.getElementById("page2").style.visibility = "hidden"
         hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
     }
 }
