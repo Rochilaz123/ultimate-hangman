@@ -15,7 +15,7 @@ Ultimate Hangman is a classic hangman game. Ultimate Hangman includes different 
 Allows the user to intuitively pick their preferred difficulty level.
 
 #### Instructions
-Instructions how to player for a user who is new to the hangman game.
+Instructions how to play for a user who is new to the hangman game.
 
 #### Game Area
 The game area includes an image of the hangman, an input for the user to enter the letter they would like to guess, and a box showing the letters guessed which are not in the word.
@@ -44,7 +44,7 @@ A footer that keeps track of how many games the user wins and loses and shows th
 
 - When I first created the website, the two pages were on two different pages of html, however the score wouldn't carry over from one page to the next as the Javascript reloaded. I put the pages in divs instead, and to switch pages I switch the style visibility.
 
-- On larger screens, the elements overlapped slightly, so i added a media query.
+- On larger screens, the elements overlapped slightly, so I added a media query.
 
 - On the first page of the website, the buttons layout changes depending on the width of the page.
 
@@ -75,8 +75,8 @@ The live link can be found here - https://rochilaz123.github.io/ultimate-hangman
 ### Media
 
 The Hangman images were taken from the below source:
-Author: Marc Oliveras
-Email: admin@oligalma.com
-Website: http://oligalma.com 
+- Author: Marc Oliveras
+- Email: admin@oligalma.com
+- Website: http://oligalma.com 
 
 
