@@ -29,25 +29,30 @@ A footer that keeps track of how many games the user wins and loses and shows th
 
 ## Testing 
 
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+- All buttons work as expected.
+- Game functions as expected
+- Score updates when it is supposed to
 
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+- I tested my website on the following browsers to ensure it works in different browsers:
+  - Chrome
+  - Firefox
+  - Microsoft Edge
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+- When I first created the website, the two pages were on two different pages of html, however the score wouldn't carry over from one page to the next as the Javascript reloaded. I put the pages in divs instead, and to switch pages I switch the style visibility.
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+- On larger screens, the elements overlapped slightly, so i added a media query.
+
+- On the first page of the website, the buttons layout changes depending on the width of the page.
 
 
 ### Validator Testing 
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Frochilaz123.github.io%2Fultimate-hangman%2F)
 - CSS
   - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Frochilaz123.github.io%2Fultimate-hangman%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
-
-### Unfixed Bugs
-
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+- Javascript
+  - Passed through JS Hint with no significant issues.
 
 ## Deployment
 

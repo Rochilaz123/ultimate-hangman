@@ -43,6 +43,9 @@ let hangmanImageSrcs = [
     "assets/images/hangman/10.jpg",
 ];
 
+//get current source of hangman image
+let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src");
+
 /**
  * once dom content loaded, the following code will be called
  */
@@ -86,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     wordNumber = Math.floor(Math.random() * 20);
                     currentWord = numberOfLetters[levelIndex][wordNumber];
                 }
-                reset()
+                reset();
                 // Add the newest word to the used words
                 usedWords[levelIndex].push(currentWord);
                 console.log(currentWord);
@@ -122,11 +125,7 @@ function correctLetter(parameter) {
         //what should happen if user wins
         if (counter === currentWord.length) {
             updateScore();
-            // document.getElementById("page1").style.visibility = "visible";
-            //   document.getElementById("page2").style.visibility = "hidden";
-           // hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
-            //counter = 0;
-            reset()
+            reset();
             document.getElementById("used-letters").innerHTML = "";
             document.getElementsByClassName("letter-box").innerHTML = "";
             document.getElementById("input-letter").focus();
@@ -135,7 +134,7 @@ function correctLetter(parameter) {
                 alert("You Won! Click ok to continue");
                 document.getElementById("page1").style.visibility = "visible";
                 document.getElementById("page2").style.visibility = "hidden";
-            }, 3000)
+            }, 2000);
 
         }
         // Checking that we are not searching past the length of the word array.
@@ -167,9 +166,6 @@ let incorrectLetters = "";
  * This code updates the hangman image* @param {*} parameter 
  */
 function wrongLetter(parameter) {
-
-    //get current source of hangman image
-    let hangmanImageSrc = document.getElementById("hangman-image").getAttribute("src");
     //find html of the current source of hangman image
     let lastHangmanImage = hangmanImageSrcs.indexOf(hangmanImageSrc);
     //update hangman image index to the next one in the array
@@ -198,7 +194,7 @@ function giveUp() {
     console.log("give up working");
     updateLosses();
     currentWord = numberOfLetters[levelIndex][wordNumber];
-    reset()
+    reset();
     runGame();
 }
 
@@ -241,6 +237,6 @@ inputBox.addEventListener('input', function () {
 
 function reset(){
     counter = 0;
-    incorrectLetters= ""
+    incorrectLetters= "";
     hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
 }
