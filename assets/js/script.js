@@ -95,12 +95,7 @@ function runGame() {
     document.getElementById("page2").style.visibility = "visible"
     document.getElementById("used-letters").innerHTML = "";
     document.getElementsByClassName("letter-box").innerHTML = "";
-    // i am not sure how to make this function. i have an array of the letters of the word.
-
-    //I need to say on event of key pressed: if the key is in the wordArray, get index number
-    //maybe i can make an array of spans to put the letters into on the dom and i can use that index number to push it to the correct number span
-    //(maybe by using class, not id?)
-    //if it's not correct i need to push the letter to the div used-letters and call wrongLetter() to change image   
+    document.getElementById("input-letter"),focus();
 }
 
 
@@ -160,17 +155,16 @@ function wrongLetter(parameter) {
     //Change hangman image source to the one in the array with the updated index number
     document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[newHangmanImage]);
     //update incorrect letters
-
-
     incorrectLetters = incorrectLetters + "    " + parameter;
     //show updated incorrect letters in used-letters div
     document.getElementById("used-letters").innerHTML = incorrectLetters;
 
 
-    if (newHangmanImage === 9) {
+    if (newHangmanImage === 11) {
+        alert("Sorry, you lose. Click ok to play again!")
         updateLosses();
-        runGame();
-        hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", "assets/images/hangman/0.jpg")
+        chooseWord()
+        hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
     }
 }
 
@@ -185,11 +179,10 @@ function giveUp() {
 }
 
 /**
- * When Choose different level button clicked, exits current game and goes back to landing page and adds one to losses.
+ * When Choose different level button clicked, exits current game and goes back to landing page
  */
 document.getElementById("choose-different-level").addEventListener("click", function chooseDifferentLevel() {
 
-    updateLosses();
     document.getElementById("page1").style.visibility = "visible"
     document.getElementById("page2").style.visibility = "hidden"
     console.log("Choose diff level working")
