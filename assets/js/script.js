@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 levelIndex = 5;
             }
 
+
             wordNumber = Math.floor(Math.random() * 20);
 
             gameLevel = this.getAttribute("data-type");
@@ -99,7 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-
+/**
+ * splits the currentWord into an array, creates the spans for the correct letters to show.
+ */
 function runGame() {
     //create an array of the letters of the word
     currentWord = currentWord.split("");
@@ -116,6 +119,8 @@ function runGame() {
 }
 
 function correctLetter(parameter) {
+
+
 
 
     let letterIndex = currentWord.indexOf(parameter);
@@ -162,6 +167,8 @@ let incorrectLetters = "";
 
 
 
+
+
 /**
  * This code updates the hangman image* @param {*} parameter 
  */
@@ -194,6 +201,7 @@ function giveUp() {
     console.log("give up working");
     updateLosses();
     currentWord = numberOfLetters[levelIndex][wordNumber];
+    console.log(currentWord)
     reset();
     runGame();
 }
@@ -239,4 +247,10 @@ function reset(){
     counter = 0;
     incorrectLetters= "";
     hangmanImageSrc = document.getElementById("hangman-image").setAttribute("src", hangmanImageSrcs[0]);
+    generateNewWord()
+}
+
+function generateNewWord() {
+    wordNumber = Math.floor(Math.random() * 20);
+    currentWord = numberOfLetters[levelIndex][wordNumber];
 }
